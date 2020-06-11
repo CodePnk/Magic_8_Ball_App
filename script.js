@@ -23,13 +23,14 @@ const possibleAnswers = [
 ];
 
 const htmlAnswer = document.querySelector('.answer');
-const btn = document.querySelector('.submitBtn');
+const submitBtn = document.querySelector('.submitBtn');
+const resetBtn = document.querySelector('.resetBtn');
+
 const ball = document.querySelector('.ball');
 const answerDisplay = document.querySelector('.logo-container');
 
 function giveAnswer() {
   const fortune = possibleAnswers[Math.floor(Math.random() * 20)];
-  htmlAnswer.textContent = '';
   htmlAnswer.insertAdjacentText('afterbegin', fortune);
 }
 
@@ -43,18 +44,19 @@ function getAnswer() {
   giveAnswer();
 }
 
-function reset() {
-  setTimeout(animate, 1500);
-}
+let clicked = 0;
 
-// animates 8 ball on 'click' of button
-btn.addEventListener('click', animate);
-btn.addEventListener('click', getAnswer);
-// // resets animation on 8 ball on 'click' of button
-btn.addEventListener('click', reset);
-
-// if magicballApp ran & button clicked reset state.
-
-function runApp {
-  
-}
+submitBtn.onclick = function() {
+  clicked = true;
+  animate();
+  getAnswer();
+  // on click hide submit button and unhide reset button
+  if (clicked === true) {
+    submitBtn.classList.add('hide');
+    resetBtn.classList.toggle('unhide');
+  }
+};
+// on button click reload page
+resetBtn.onclick = function() {
+  location.reload();
+};

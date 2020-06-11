@@ -111,3 +111,11 @@ main {
   87.5% {top: 25px;}
   100% {top: 0px;}
 }
+
+.unhide {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
